@@ -11,12 +11,12 @@ def lambda_handler(event, context):
     #Create a new client
     SSHClient = paramiko.SSHClient()
     SSHClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    host ="52.77.235.140"
+    host ="54.173.254.242"
     SSHClient.connect (hostname = host, username = "ec2-user", pkey = pem_key)
 
     print("Connected to: " + host)
     
-    s_path = '/home/ec2-user/trigger_dir/'
+    s_path = '/home/ec2-user/source_dir/'
     s_pattern = '"Trigger*"'
     rawcommand = 'find {path} -name {pattern}'
     command = rawcommand.format(path = s_path, pattern = s_pattern)
